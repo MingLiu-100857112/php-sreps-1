@@ -1,6 +1,6 @@
 # php-sreps
 
-> A Vue.js project
+> People Health Pharmacy (PHP) inc. Sales Reporting and Prediction System
 
 ## Build Setup
 

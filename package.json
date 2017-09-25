@@ -1,7 +1,7 @@
 {
   "name": "php-sreps",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "People Health Pharmacy (PHP) inc. Sales Reporting and Prediction System",
   "author": "Sunheang Ty <tsun.heang@gmail.com>",
   "private": true,
   "scripts": {
