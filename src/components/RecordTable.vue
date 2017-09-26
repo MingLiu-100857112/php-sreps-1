@@ -5,7 +5,7 @@
         <tr>
           <th>Identifier</th>
           <th class="uk-width-small">Title</th>
-          <th class="uk-width-small">Quantiy</th>
+          <th class="uk-width-small">Quantity</th>
           <th class="uk-width-medium">Date</th>
           <th></th>
         </tr>
