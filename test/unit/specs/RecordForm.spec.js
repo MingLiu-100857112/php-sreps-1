@@ -3,7 +3,7 @@ import RecordForm from '@/components/RecordForm'
 
 const Constructor = Vue.extend(RecordForm)
 
-describe('RecordForm Unit Test', () => {
+describe('RecordForm Unit Tests', () => {
 
   var vm = new Constructor()
 
