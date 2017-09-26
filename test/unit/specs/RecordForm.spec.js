@@ -1,11 +1,22 @@
 import Vue from 'vue'
 import RecordForm from '@/components/RecordForm'
 
-describe('Hello.vue', () => {
+const Constructor = Vue.extend(RecordForm)
+
+describe('RecordForm Unit Tests', () => {
+
+  var vm = new Constructor()
+
+  before(() => {
+    vm.$mount()
+  })
+
   it('should render correct contents', () => {
-    const Constructor = Vue.extend(RecordForm)
-    const vm = new Constructor().$mount()
     expect(vm.$el.querySelector('legend').textContent)
       .to.equal('Enter new record')
+  })
+
+  after(() => {
+    vm.$destroy()
   })
 })
