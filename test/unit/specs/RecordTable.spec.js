@@ -3,7 +3,7 @@ import RecordTable from '@/components/RecordTable'
 
 const Constructor = Vue.extend(RecordTable)
 
-describe('RecordTable Unit Tests', () => {
+describe('RecordTable Unit Test', () => {
 
   var vm = new Constructor()
 

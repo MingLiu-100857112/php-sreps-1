@@ -3,7 +3,7 @@ import RecordForm from '@/components/RecordForm'
 
 const Constructor = Vue.extend(RecordForm)
 
-describe('RecordForm Unit Tests', () => {
+describe('RecordForm Unit Test', () => {
 
   var vm = new Constructor()
 
@@ -42,18 +42,18 @@ describe('RecordForm Unit Tests', () => {
   it('should render correct contents', () => {
     expect(vm.$el.querySelector('form')).to.exist
     expect(vm.$el.querySelector('fieldset')).to.exist
-    expect(vm.$el.querySelector('legend').innerHTML).to.be.equal('Enter new record')
-    expect(vm.$el.querySelectorAll('label').item(0).innerHTML).to.be.equal('Title')
-    expect(vm.$el.querySelectorAll('label').item(1).innerHTML).to.be.equal('Quantity')
-    expect(vm.$el.querySelectorAll('label').item(2).innerHTML).to.be.equal('Date')
-    expect(vm.$el.querySelectorAll('input').item(0).getAttribute('type')).to.be.equal('text')
-    expect(vm.$el.querySelectorAll('input').item(1).getAttribute('type')).to.be.equal('text')
-    expect(vm.$el.querySelectorAll('input').item(2).getAttribute('type')).to.be.equal('text')
-    expect(vm.$el.querySelectorAll('input').item(0).getAttribute('placeholder')).to.be.equal('Title')
-    expect(vm.$el.querySelectorAll('input').item(1).getAttribute('placeholder')).to.be.equal('Quantity')
-    expect(vm.$el.querySelectorAll('input').item(2).getAttribute('placeholder')).to.be.equal('Date')
-    expect(vm.$el.querySelector('button').getAttribute('type')).to.be.equal('submit')
-    expect(vm.$el.querySelector('button').innerHTML).to.be.equal('Add Record')
+    expect(vm.$el.querySelector('legend').innerHTML).to.contain('Enter new record')
+    expect(vm.$el.querySelectorAll('label').item(0).innerHTML).to.contain('Title')
+    expect(vm.$el.querySelectorAll('label').item(1).innerHTML).to.contain('Quantity')
+    expect(vm.$el.querySelectorAll('label').item(2).innerHTML).to.contain('Date')
+    expect(vm.$el.querySelectorAll('input').item(0).getAttribute('type')).to.contain('text')
+    expect(vm.$el.querySelectorAll('input').item(1).getAttribute('type')).to.contain('text')
+    expect(vm.$el.querySelectorAll('input').item(2).getAttribute('type')).to.contain('text')
+    expect(vm.$el.querySelectorAll('input').item(0).getAttribute('placeholder')).to.contain('Title')
+    expect(vm.$el.querySelectorAll('input').item(1).getAttribute('placeholder')).to.contain('Quantity')
+    expect(vm.$el.querySelectorAll('input').item(2).getAttribute('placeholder')).to.contain('Date')
+    expect(vm.$el.querySelector('button').getAttribute('type')).to.contain('submit')
+    expect(vm.$el.querySelector('button').innerHTML).to.contain('Add Record')
   })
 
   after(() => {

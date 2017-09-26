@@ -1,28 +1,46 @@
 <template>
   <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-margin-bottom">
-    <form v-on:submit.prevent="addNewRecord" class="uk-form-stacked">
+    <form
+      v-on:submit.prevent="addNewRecord"
+      class="uk-form-stacked">
       <fieldset class="uk-fieldset">
         <legend class="uk-legend uk-card-title">Enter new record</legend>
         <div class="uk-margin">
           <label class="uk-form-label">Title</label>
           <div class="uk-form-controls">
-            <input v-model.trim="title" class="uk-input uk-form-small" placeholder="Title" type="text">
+            <input
+              v-model.trim="title"
+              class="uk-input uk-form-small"
+              placeholder="Title"
+              type="text">
           </div>
         </div>
         <div class="uk-margin">
           <label class="uk-form-label">Quantity</label>
           <div class="uk-form-controls">
-            <input v-model.trim="quantity" class="uk-input uk-form-small" placeholder="Quantity" type="text">
+            <input
+              v-model.trim="quantity"
+              class="uk-input uk-form-small"
+              placeholder="Quantity"
+              type="text">
           </div>
         </div>
         <div class="uk-margin">
           <label class="uk-form-label">Date</label>
           <div class="uk-form-controls">
-            <input v-model.trim="date" class="uk-input uk-form-small" placeholder="Date" type="text">
+            <input
+              v-model.trim="date"
+              class="uk-input uk-form-small"
+              placeholder="Date"
+              type="text">
           </div>
         </div>
       </fieldset>
-      <button class="uk-button uk-button-primary" type="submit">Add Record</button>
+      <button
+        class="uk-button uk-button-primary"
+        type="submit">
+        Add Record
+      </button>
     </form>
   </div>
 </template>

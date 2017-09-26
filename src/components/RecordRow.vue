@@ -1,6 +1,6 @@
 <template>
-  <tr>
-    <template v-if="editing">
+<tr>
+  <template v-if="editing">
       <td>{{ record.id }}</td>
       <td>
         <input
@@ -27,35 +27,33 @@
           type="text">
       </td>
     </template>
-    <template v-else>
+  <template v-else>
       <td>{{ record.id }}</td>
       <td>{{ record.title }}</td>
       <td>{{ record.quantity }}</td>
       <td>{{ record.date | formatDate }}</td>
     </template>
-    <td>
+  <td>
+    <button
+      v-if="editing"
+      v-on:click="endEditing"
+      class="uk-button uk-button-default uk-button-small">
+      Cancel
+    </button>
+    <div v-else class="uk-button-group">
       <button
-        v-if="editing"
-        v-on:click="endEditing"
-        class="uk-button uk-button-default uk-button-small">
-        Cancel
+        v-on:click="beginEditing"
+        class="uk-button uk-button-secondary uk-button-small">
+        Edit
       </button>
-      <div
-        v-else
-        class="uk-button-group">
-        <button
-          v-on:click="beginEditing"
-          class="uk-button uk-button-secondary uk-button-small">
-          Edit
-        </button>
-        <button
-          v-on:click="remove"
-          class="uk-button uk-button-danger uk-button-small">
-          Remove
-        </button>
-      </div>
-    </td>
-  </tr>
+      <button
+        v-on:click="remove"
+        class="uk-button uk-button-danger uk-button-small">
+        Remove
+      </button>
+    </div>
+  </td>
+</tr>
 </template>
 
 <script>
