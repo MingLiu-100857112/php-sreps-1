@@ -1,59 +1,59 @@
 <template>
-<tr>
-  <template v-if="editing">
+  <tr>
+    <template v-if="editing">
       <td>{{ record.id }}</td>
       <td>
         <input
-          v-model.trim="newRecord.title"
-          v-on:keyup.enter="doneEditing"
+          v-model.trim="title"
+          v-on:keyup.enter="edit"
           class="uk-input uk-form-small uk-form-width-small"
           placeholder="Title"
           type="text">
       </td>
       <td>
         <input
-          v-model.trim="newRecord.quantity"
-          v-on:keyup.enter="doneEditing"
+          v-model.trim="quantity"
+          v-on:keyup.enter="edit"
           class="uk-input uk-form-small uk-form-width-small"
           placeholder="Quantity"
           type="text">
       </td>
       <td>
         <input
-          v-model.trim="newRecord.date"
-          v-on:keyup.enter="doneEditing"
+          v-model.trim="date"
+          v-on:keyup.enter="edit"
           class="uk-input uk-form-small uk-form-width-medium"
           placeholder="Date"
           type="text">
       </td>
     </template>
-  <template v-else>
+    <template v-else>
       <td>{{ record.id }}</td>
       <td>{{ record.title }}</td>
       <td>{{ record.quantity }}</td>
       <td>{{ record.date | formatDate }}</td>
     </template>
-  <td>
-    <button
-      v-if="editing"
-      v-on:click="endEditing"
-      class="uk-button uk-button-default uk-button-small">
-      Cancel
-    </button>
-    <div v-else class="uk-button-group">
+    <td>
       <button
-        v-on:click="beginEditing"
-        class="uk-button uk-button-secondary uk-button-small">
-        Edit
+        v-if="editing"
+        v-on:click="endEditing"
+        class="uk-button uk-button-default uk-button-small">
+        Cancel
       </button>
-      <button
-        v-on:click="remove"
-        class="uk-button uk-button-danger uk-button-small">
-        Remove
-      </button>
-    </div>
-  </td>
-</tr>
+      <div v-else class="uk-button-group">
+        <button
+          v-on:click="beginEditing"
+          class="uk-button uk-button-secondary uk-button-small">
+          Edit
+        </button>
+        <button
+          v-on:click="remove"
+          class="uk-button uk-button-danger uk-button-small">
+          Remove
+        </button>
+      </div>
+    </td>
+  </tr>
 </template>
 
 <script>
@@ -65,43 +65,41 @@ export default {
   data: function() {
     return {
       editing: false,
-      newRecordId: this.record.id,
-      newRecord: {
-        title: this.record.title,
-        quantity: this.record.quantity,
-        date: this.record.date
-      }
+      title: null,
+      quantity: null,
+      date: null
     }
   },
   methods: {
     beginEditing: function() {
       this.editing = true
+      this.title = this.record.title
+      this.quantity = this.record.quantity
+      this.date = this.record.date
     },
     endEditing: function() {
       this.editing = false
-      this.newRecordId = this.record.id
-      this.newRecord = {
-        title: this.record.title,
-        quantity: this.record.quantity,
-        date: this.record.date
-      }
+      this.title = this.record.title
+      this.quantity = this.record.quantity
+      this.date = this.record.date
     },
-    doneEditing: function() {
+    edit: function() {
       this.editing = false
-      this.newRecordId = this.newRecordId
-      this.newRecord = {
-        title: this.newRecord.title,
-        quantity: +this.newRecord.quantity,
-        date: new Date(this.newRecord.date).toJSON()
-      }
-      var day = this.newRecord.date.slice(0, 10)
-      var month = this.newRecord.date.slice(0, 7)
-      var year = this.newRecord.date.slice(0, 4)
-      database.child('/records/' + this.newRecordId).set(this.newRecord)
-      updateLocation('/reports/' + this.newRecord.title, this.newRecord.quantity)
-      updateLocation('/daily-reports/' + day + '/' + this.newRecord.title, this.newRecord.quantity)
-      updateLocation('/monthly-reports/' + month + '/' + this.newRecord.title, this.newRecord.quantity)
-      updateLocation('/annually-reports/' + year + '/' + this.newRecord.title, this.newRecord.quantity)
+      this.title = this.title,
+      this.quantity = +this.quantity,
+      this.date = new Date(this.date).toJSON()
+      database.child('/records/' + this.record.id).set({
+        title: this.title,
+        quantity: this.quantity,
+        date: this.date
+      })
+      var day = this.date.slice(0, 10)
+      var month = this.date.slice(0, 7)
+      var year = this.date.slice(0, 4)
+      updateLocation('/reports/' + this.title, this.quantity)
+      updateLocation('/daily-reports/' + day + '/' + this.title, this.quantity)
+      updateLocation('/monthly-reports/' + month + '/' + this.title, this.quantity)
+      updateLocation('/annually-reports/' + year + '/' + this.title, this.quantity)
       day = this.record.date.toJSON().slice(0, 10)
       month = this.record.date.toJSON().slice(0, 7)
       year = this.record.date.toJSON().slice(0, 4)

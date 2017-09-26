@@ -2,10 +2,9 @@ import Vue from 'vue'
 import RecordForm from '@/components/RecordForm'
 
 const Constructor = Vue.extend(RecordForm)
+const vm = new Constructor()
 
 describe('RecordForm Unit Test', () => {
-
-  var vm = new Constructor()
 
   before(() => {
     vm.$mount()
@@ -13,7 +12,7 @@ describe('RecordForm Unit Test', () => {
 
   it('should be correct components', () => {
     expect(vm)
-      .to.be.a('object')
+      .to.be.an('object')
       .that.is.an.instanceof(Constructor)
   })
 
@@ -25,7 +24,7 @@ describe('RecordForm Unit Test', () => {
 
   it('should has correct data', () => {
     expect(vm.$data)
-      .to.be.a('object')
+      .to.be.an('object')
       .that.deep.equal({
         title: null,
         quantity: null,
@@ -34,26 +33,8 @@ describe('RecordForm Unit Test', () => {
   })
 
   it('should has correct methods', () => {
-    expect(vm.$options.methods)
-      .to.be.a('object')
-      .that.has.deep.property('addNewRecord')
-  })
-
-  it('should render correct contents', () => {
-    expect(vm.$el.querySelector('form')).to.exist
-    expect(vm.$el.querySelector('fieldset')).to.exist
-    expect(vm.$el.querySelector('legend').innerHTML).to.contain('Enter new record')
-    expect(vm.$el.querySelectorAll('label').item(0).innerHTML).to.contain('Title')
-    expect(vm.$el.querySelectorAll('label').item(1).innerHTML).to.contain('Quantity')
-    expect(vm.$el.querySelectorAll('label').item(2).innerHTML).to.contain('Date')
-    expect(vm.$el.querySelectorAll('input').item(0).getAttribute('type')).to.contain('text')
-    expect(vm.$el.querySelectorAll('input').item(1).getAttribute('type')).to.contain('text')
-    expect(vm.$el.querySelectorAll('input').item(2).getAttribute('type')).to.contain('text')
-    expect(vm.$el.querySelectorAll('input').item(0).getAttribute('placeholder')).to.contain('Title')
-    expect(vm.$el.querySelectorAll('input').item(1).getAttribute('placeholder')).to.contain('Quantity')
-    expect(vm.$el.querySelectorAll('input').item(2).getAttribute('placeholder')).to.contain('Date')
-    expect(vm.$el.querySelector('button').getAttribute('type')).to.contain('submit')
-    expect(vm.$el.querySelector('button').innerHTML).to.contain('Add Record')
+    expect(vm.$options.methods).to.be.a('object')
+    expect(vm.$options.methods.addNewRecord).to.exist.and.is.a('function')
   })
 
   after(() => {

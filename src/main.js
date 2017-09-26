@@ -2,11 +2,7 @@ import Vue from 'vue'
 import App from './App'
 
 import { database } from './database'
-
-Vue.config.productionTip = false
-Vue.filter('formatDate', date => {
-  return date.toDateString()
-})
+import { formatDate } from './filters'
 
 const vm = new Vue({
   el: '#app',
