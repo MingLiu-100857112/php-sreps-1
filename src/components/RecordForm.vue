@@ -1,48 +1,21 @@
-<template>
-  <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-margin-bottom">
-    <form
-      v-on:submit.prevent="addNewRecord"
-      class="uk-form-stacked">
-      <fieldset class="uk-fieldset">
-        <legend class="uk-legend uk-card-title">Enter new record</legend>
-        <div class="uk-margin">
-          <label class="uk-form-label">Title</label>
-          <div class="uk-form-controls">
-            <input
-              v-model.trim="title"
-              class="uk-input uk-form-small"
-              placeholder="Title"
-              type="text">
-          </div>
-        </div>
-        <div class="uk-margin">
-          <label class="uk-form-label">Quantity</label>
-          <div class="uk-form-controls">
-            <input
-              v-model.trim="quantity"
-              class="uk-input uk-form-small"
-              placeholder="Quantity"
-              type="text">
-          </div>
-        </div>
-        <div class="uk-margin">
-          <label class="uk-form-label">Date</label>
-          <div class="uk-form-controls">
-            <input
-              v-model.trim="date"
-              class="uk-input uk-form-small"
-              placeholder="Date"
-              type="text">
-          </div>
-        </div>
-      </fieldset>
-      <button
-        class="uk-button uk-button-primary"
-        type="submit">
-        Add Record
-      </button>
-    </form>
-  </div>
+<template lang="pug">
+div.uk-card.uk-card-default.uk-card-hover.uk-card-body.uk-margin-bottom
+  form.uk-form-stacked(@submit.prevent="addNewRecord")
+    fieldset.uk-fieldset
+      legend.uk-legend.uk-card-title Enter new record
+      div.uk-margin
+        label.uk-form-label Title
+        div.uk-form-controls
+          input.uk-input.uk-form-small(v-model.trim="title", placeholder="Title", type="text")
+      div.uk-margin
+        label.uk-form-label Quantity
+        div.uk-form-controls
+          input.uk-input.uk-form-small(v-model.trim="quantity", placeholder="Quantity", type="text")
+      div.uk-margin
+        label.uk-form-label Date
+        div.uk-form-controls
+          input.uk-input.uk-form-small(v-model.trim="date", placeholder="Date", type="text")
+    button.uk-button.uk-button-primary(type="submit") Add Record
 </template>
 
 <script>

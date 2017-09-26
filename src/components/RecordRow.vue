@@ -1,59 +1,20 @@
-<template>
-  <tr>
-    <template v-if="editing">
-      <td>{{ record.id }}</td>
-      <td>
-        <input
-          v-model.trim="title"
-          v-on:keyup.enter="edit"
-          class="uk-input uk-form-small uk-form-width-small"
-          placeholder="Title"
-          type="text">
-      </td>
-      <td>
-        <input
-          v-model.trim="quantity"
-          v-on:keyup.enter="edit"
-          class="uk-input uk-form-small uk-form-width-small"
-          placeholder="Quantity"
-          type="text">
-      </td>
-      <td>
-        <input
-          v-model.trim="date"
-          v-on:keyup.enter="edit"
-          class="uk-input uk-form-small uk-form-width-medium"
-          placeholder="Date"
-          type="text">
-      </td>
-    </template>
-    <template v-else>
-      <td>{{ record.id }}</td>
-      <td>{{ record.title }}</td>
-      <td>{{ record.quantity }}</td>
-      <td>{{ record.date | formatDate }}</td>
-    </template>
-    <td>
-      <button
-        v-if="editing"
-        v-on:click="endEditing"
-        class="uk-button uk-button-default uk-button-small">
-        Cancel
-      </button>
-      <div v-else class="uk-button-group">
-        <button
-          v-on:click="beginEditing"
-          class="uk-button uk-button-secondary uk-button-small">
-          Edit
-        </button>
-        <button
-          v-on:click="remove"
-          class="uk-button uk-button-danger uk-button-small">
-          Remove
-        </button>
-      </div>
-    </td>
-  </tr>
+<template lang="pug">
+tr
+  template(v-if="editing")
+    td {{ record.id }}
+    td: input.uk-input.uk-form-small.uk-form-width-small(v-model.trim="title", @keyup.enter="edit", placeholder="Title", type="text")
+    td: input.uk-input.uk-form-small.uk-form-width-small(v-model.trim="quantity", @keyup.enter="edit", placeholder="Quantity", type="text")
+    td: input.uk-input.uk-form-small.uk-form-width-small(v-model.trim="date", @keyup.enter="edit", placeholder="Date", type="text")
+  template(v-else)
+    td {{ record.id }}
+    td {{ record.title }}
+    td {{ record.quantity }}
+    td {{ record.date | formatDate }}
+  td
+    button.uk-button.uk-button-default.uk-button-small(v-if="editing", @click="endEditing") Cancel
+    div.uk-button-group(v-else)
+      button.uk-button.uk-button-secondary.uk-button-small(@click="beginEditing") edit
+      button.uk-button.uk-button-danger.uk-button-small(@click="remove") Remove
 </template>
 
 <script>
