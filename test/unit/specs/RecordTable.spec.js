@@ -22,6 +22,17 @@ describe('RecordTable Unit Test', () => {
       .that.equal('record-table')
   })
 
+  it('should render correct content', () => {
+    expect(vm.$el.querySelector('table')).to.exist
+    expect(vm.$el.querySelector('thead')).to.exist
+    expect(vm.$el.querySelector('tr')).to.exist
+    expect(vm.$el.querySelectorAll('th').item(0).innerHTML).to.be.equal('Identifier')
+    expect(vm.$el.querySelectorAll('th').item(1).innerHTML).to.be.equal('Title')
+    expect(vm.$el.querySelectorAll('th').item(2).innerHTML).to.be.equal('Quantity')
+    expect(vm.$el.querySelectorAll('th').item(3).innerHTML).to.be.equal('Date')
+    expect(vm.$el.querySelector('tbody')).to.exist
+  })
+
   after(() => {
     vm.$destroy()
   })

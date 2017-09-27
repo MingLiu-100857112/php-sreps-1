@@ -5,16 +5,16 @@ tr
     td: input.uk-input.uk-form-small.uk-form-width-small(v-model.trim="title", @keyup.enter="edit", placeholder="Title", type="text")
     td: input.uk-input.uk-form-small.uk-form-width-small(v-model.trim="quantity", @keyup.enter="edit", placeholder="Quantity", type="text")
     td: input.uk-input.uk-form-small.uk-form-width-small(v-model.trim="date", @keyup.enter="edit", placeholder="Date", type="text")
+    td: button.uk-button.uk-button-default.uk-button-small(@click="endEditing") Cancel
   template(v-else)
     td {{ record.id }}
     td {{ record.title }}
     td {{ record.quantity }}
     td {{ record.date | formatDate }}
-  td
-    button.uk-button.uk-button-default.uk-button-small(v-if="editing", @click="endEditing") Cancel
-    div.uk-button-group(v-else)
-      button.uk-button.uk-button-secondary.uk-button-small(@click="beginEditing") edit
-      button.uk-button.uk-button-danger.uk-button-small(@click="remove") Remove
+    td
+      div.uk-button-group
+        button.uk-button.uk-button-secondary.uk-button-small(@click="beginEditing") Edit
+        button.uk-button.uk-button-danger.uk-button-small(@click="remove") Remove
 </template>
 
 <script>

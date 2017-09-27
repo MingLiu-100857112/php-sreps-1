@@ -56,6 +56,29 @@ describe('RecordRow Unit Test', () => {
     expect(vm.$options.methods.remove).to.exist.and.is.a('function')
   })
 
+  it('should render correct content', (done) => {
+    expect(vm.$el.querySelectorAll('td').item(0).innerHTML).to.be.equal(vm.$props.record.id)
+    expect(vm.$el.querySelectorAll('td').item(1).innerHTML).to.be.equal(vm.$props.record.title)
+    expect(vm.$el.querySelectorAll('td').item(2).innerHTML).to.be.equal(vm.$props.record.quantity.toString())
+    expect(vm.$el.querySelectorAll('td').item(3).innerHTML).to.be.equal(vm.$props.record.date.toDateString())
+    expect(vm.$el.querySelectorAll('td').item(4)).to.exist
+    expect(vm.$el.querySelectorAll('button').item(0).innerHTML).to.be.equal('Edit')
+    expect(vm.$el.querySelectorAll('button').item(1).innerHTML).to.be.equal('Remove')
+    vm.editing = true
+    Vue.nextTick(() => {
+      expect(vm.$el.querySelectorAll('td').item(0).innerHTML).to.be.equal(vm.$props.record.id)
+      expect(vm.$el.querySelectorAll('td').item(1).firstChild).to.be.equal(vm.$el.querySelectorAll('input').item(0))
+      expect(vm.$el.querySelectorAll('td').item(2).firstChild).to.be.equal(vm.$el.querySelectorAll('input').item(1))
+      expect(vm.$el.querySelectorAll('td').item(3).firstChild).to.be.equal(vm.$el.querySelectorAll('input').item(2))
+      expect(vm.$el.querySelectorAll('td').item(4).firstChild).to.be.equal(vm.$el.querySelector('button'))
+      expect(vm.$el.querySelectorAll('input').item(0).getAttribute('placeholder')).to.be.equal('Title')
+      expect(vm.$el.querySelectorAll('input').item(1).getAttribute('placeholder')).to.be.equal('Quantity')
+      expect(vm.$el.querySelectorAll('input').item(2).getAttribute('placeholder')).to.be.equal('Date')
+      expect(vm.$el.querySelector('button').innerHTML).to.be.equal('Cancel')
+      done()
+    })
+  })
+
   after(() => {
     vm.$destroy()
   })

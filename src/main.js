@@ -7,14 +7,12 @@ import { formatDate } from './filters'
 const vm = new Vue({
   el: '#app',
   data: {
-    records: [],
-    reports: []
+    records: []
   },
   render: function(createElement) {
     return createElement(App, {
       props: {
-        records: this.records,
-        reports: this.reports
+        records: this.records
       }
     })
   }
@@ -33,20 +31,5 @@ database.child('records').on('value', snapshot => {
   }
   else {
     vm.records = []
-  }
-})
-
-database.child('reports').on('value', snapshot => {
-  if (snapshot.val() !== null) {
-    const object = snapshot.val()
-    vm.reports = Object.keys(object).map(key => {
-      const report = {}
-      report.quantity = +object[key]
-      report.title = key
-      return report
-    })
-  }
-  else {
-    vm.reports = []
   }
 })

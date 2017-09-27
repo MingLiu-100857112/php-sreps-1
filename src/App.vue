@@ -1,16 +1,9 @@
-<template>
-  <div id="app" class="uk-grid-small" uk-grid>
-    <div>
-      <record-form></record-form>
-    </div>
-    <record-table>
-      <record-row
-        v-for="record in records"
-        v-bind:record="record"
-        v-bind:key="record.id">
-      </record-row>
-    </record-table>
-  </div>
+<template lang="pug">
+div#app.uk-grid-small(uk-grid)
+  div
+    record-form
+  record-table
+    record-row(v-for="record in records", :record="record", :key="record.id")
 </template>
 
 <script>
@@ -19,7 +12,7 @@ import RecordTable from './components/RecordTable'
 import RecordRow from './components/RecordRow'
 
 export default {
-  props: ['records', 'reports'],
+  props: ['records'],
   name: 'app',
   components: {
     RecordForm,

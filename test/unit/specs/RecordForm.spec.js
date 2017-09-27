@@ -37,6 +37,19 @@ describe('RecordForm Unit Test', () => {
     expect(vm.$options.methods.addNewRecord).to.exist.and.is.a('function')
   })
 
+  it('should render correct contents', () => {
+    expect(vm.$el.querySelector('form')).to.exist
+    expect(vm.$el.querySelector('fieldset')).to.exist
+    expect(vm.$el.querySelector('legend').innerHTML).to.be.equal('Enter new record')
+    expect(vm.$el.querySelectorAll('label').item(0).innerHTML).to.be.equal('Title')
+    expect(vm.$el.querySelectorAll('label').item(1).innerHTML).to.be.equal('Quantity')
+    expect(vm.$el.querySelectorAll('label').item(2).innerHTML).to.be.equal('Date')
+    expect(vm.$el.querySelectorAll('input').item(0).getAttribute('placeholder')).to.be.equal('Title')
+    expect(vm.$el.querySelectorAll('input').item(1).getAttribute('placeholder')).to.be.equal('Quantity')
+    expect(vm.$el.querySelectorAll('input').item(2).getAttribute('placeholder')).to.be.equal('Date')
+    expect(vm.$el.querySelector('button').innerHTML).to.be.equal('Add Record')
+  })
+
   after(() => {
     vm.$destroy()
   })
