@@ -1,21 +1,21 @@
 <template lang="pug">
-div.uk-card.uk-card-default.uk-card-hover.uk-card-body.uk-margin-bottom
-  form.uk-form-stacked(@submit.prevent="addNewRecord")
-    fieldset.uk-fieldset
-      legend.uk-legend.uk-card-title Enter new record
-      div.uk-margin
-        label.uk-form-label Title
-        div.uk-form-controls
-          input.uk-input.uk-form-small(v-model.trim="title", placeholder="Title", type="text")
-      div.uk-margin
-        label.uk-form-label Quantity
-        div.uk-form-controls
-          input.uk-input.uk-form-small(v-model.trim="quantity", placeholder="Quantity", type="text")
-      div.uk-margin
-        label.uk-form-label Date
-        div.uk-form-controls
-          input.uk-input.uk-form-small(v-model.trim="date", placeholder="Date", type="text")
-    button.uk-button.uk-button-primary(type="submit") Add Record
+div.card
+  form(@submit.prevent="addNewRecord")
+    fieldset
+      legend Enter new record
+      div.margin
+        label Title
+        div.control
+          input(v-model.trim="title", placeholder="Title", type="text")
+      div.margin
+        label Quantity
+        div.control
+          input(v-model.trim="quantity", placeholder="Quantity", type="text")
+      div.margin
+        label Date
+        div.controls
+          input(v-model.trim="date", placeholder="Date", type="text")
+    button(type="submit") Add Record
 </template>
 
 <script>
@@ -53,3 +53,43 @@ export default {
   }
 }
 </script>
+
+<style lang="sass" scoped>
+@import "~uikit/src/scss/variables-theme.scss"
+@import "~uikit/src/scss/mixins-theme.scss"
+@import "~uikit/src/scss/uikit-theme.scss"
+
+div.card
+  @extend .uk-card
+  @extend .uk-card-default
+  @extend .uk-card-hover
+  @extend .uk-card-body
+  @extend .uk-margin-bottom
+
+div.controls
+  @extend .uk-form-controls
+
+div.margin
+  @extend .uk-margin
+
+form
+  @extend .uk-form-stacked
+
+fieldset
+  @extend .uk-fieldset
+
+legend
+  @extend .uk-legend
+  @extend .uk-card-title
+
+label
+  @extend .uk-form-label
+
+input
+  @extend .uk-input
+  @extend .uk-form-small
+
+button
+  @extend .uk-button
+  @extend .uk-button-primary
+</style>

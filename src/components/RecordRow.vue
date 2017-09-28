@@ -2,19 +2,19 @@
 tr
   template(v-if="editing")
     td {{ record.id }}
-    td: input.uk-input.uk-form-small.uk-form-width-small(v-model.trim="title", @keyup.enter="edit", placeholder="Title", type="text")
-    td: input.uk-input.uk-form-small.uk-form-width-small(v-model.trim="quantity", @keyup.enter="edit", placeholder="Quantity", type="text")
-    td: input.uk-input.uk-form-small.uk-form-width-small(v-model.trim="date", @keyup.enter="edit", placeholder="Date", type="text")
-    td: button.uk-button.uk-button-default.uk-button-small(@click="endEditing") Cancel
+    td: input(v-model.trim="title", @keyup.enter="edit", placeholder="Title", type="text")
+    td: input(v-model.trim="quantity", @keyup.enter="edit", placeholder="Quantity", type="text")
+    td: input(v-model.trim="date", @keyup.enter="edit", placeholder="Date", type="text")
+    td: button.default(@click="endEditing") Cancel
   template(v-else)
     td {{ record.id }}
     td {{ record.title }}
     td {{ record.quantity }}
     td {{ record.date | formatDate }}
     td
-      div.uk-button-group
-        button.uk-button.uk-button-secondary.uk-button-small(@click="beginEditing") Edit
-        button.uk-button.uk-button-danger.uk-button-small(@click="remove") Remove
+      div.controls
+        button.secondary(@click="beginEditing") Edit
+        button.danger(@click="remove") Remove
 </template>
 
 <script>
@@ -82,3 +82,30 @@ export default {
   }
 }
 </script>
+
+<style lang="sass" scoped>
+@import "~uikit/src/scss/variables-theme.scss"
+@import "~uikit/src/scss/mixins-theme.scss"
+@import "~uikit/src/scss/uikit-theme.scss"
+
+div.controls
+  @extend .uk-button-group
+
+input
+  @extend .uk-input
+  @extend .uk-form-small
+  @extend .uk-form-width-small
+
+button
+  @extend .uk-button
+  @extend .uk-button-small
+
+button.default
+  @extend .uk-button-default
+
+button.secondary
+  @extend .uk-button-secondary
+
+button.danger
+  @extend .uk-button-danger
+</style>

@@ -1,5 +1,5 @@
 <template lang="pug">
-div#app.uk-grid-small(uk-grid)
+div#app(uk-grid)
   div
     record-form
   record-table
@@ -7,6 +7,8 @@ div#app.uk-grid-small(uk-grid)
 </template>
 
 <script>
+import UIkit from 'uikit'
+
 import RecordForm from './components/RecordForm'
 import RecordTable from './components/RecordTable'
 import RecordRow from './components/RecordRow'
@@ -21,3 +23,12 @@ export default {
   }
 }
 </script>
+
+<style lang="sass">
+@import "~uikit/src/scss/variables-theme.scss"
+@import "~uikit/src/scss/mixins-theme.scss"
+@import "~uikit/src/scss/uikit-theme.scss"
+
+#app
+  @extend .uk-grid-small
+</style>
