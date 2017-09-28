@@ -1,5 +1,5 @@
 <template lang="pug">
-div.overflow
+div.record-table.overflow
   table.uk-table.uk-table-small
     thead
       tr

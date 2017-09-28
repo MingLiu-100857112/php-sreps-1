@@ -1,20 +1,20 @@
 <template lang="pug">
-div.card
+div.record-form.card
   form(@submit.prevent="addNewRecord")
     fieldset
       legend Enter new record
       div.margin
-        label Title
+        label(for="title") Title
         div.control
-          input(v-model.trim="title", placeholder="Title", type="text")
+          input(v-model.trim="title", name="title", placeholder="Title", type="text")
       div.margin
-        label Quantity
+        label(for="quantity") Quantity
         div.control
-          input(v-model.trim="quantity", placeholder="Quantity", type="text")
+          input(v-model.trim="quantity", name="quantity", placeholder="Quantity", type="text")
       div.margin
-        label Date
+        label(for="date") Date
         div.controls
-          input(v-model.trim="date", placeholder="Date", type="text")
+          input(v-model.trim="date", name="date", placeholder="Date", type="text")
     button(type="submit") Add Record
 </template>
 
