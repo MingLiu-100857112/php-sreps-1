@@ -1,11 +1,14 @@
 <template lang="pug">
-tr
+tr#record-row
   template(v-if="editing")
     td {{ record.id }}
-    td: input(v-model.trim="title", @keyup.enter="edit", placeholder="Title", type="text")
-    td: input(v-model.trim="quantity", @keyup.enter="edit", placeholder="Quantity", type="text")
-    td: input(v-model.trim="date", @keyup.enter="edit", placeholder="Date", type="text")
-    td: button.default(@click="endEditing") Cancel
+    td: input(v-model.trim="title", @keyup.enter="edit", name="title" placeholder="Title", type="text")
+    td: input(v-model.trim="quantity", @keyup.enter="edit", name="quantity" placeholder="Quantity", type="text")
+    td: input(v-model.trim="date", @keyup.enter="edit", name="date" placeholder="Date", type="text")
+    td
+      div.controls
+        button.primary(@click="edit") Save
+        button.default(@click="endEditing") Cancel
   template(v-else)
     td {{ record.id }}
     td {{ record.title }}
@@ -102,6 +105,9 @@ button
 
 button.default
   @extend .uk-button-default
+
+button.primary
+  @extend .uk-button-primary
 
 button.secondary
   @extend .uk-button-secondary

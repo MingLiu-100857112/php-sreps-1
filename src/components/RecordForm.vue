@@ -1,5 +1,5 @@
 <template lang="pug">
-div.record-form.card
+div#record-form.card
   form(@submit.prevent="addNewRecord")
     fieldset
       legend Enter new record

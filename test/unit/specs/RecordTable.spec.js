@@ -22,6 +22,11 @@ describe('RecordTable Unit Test', () => {
       .that.equal('record-table')
   })
 
+  it('should has correct methods', () => {
+    expect(vm.$options.methods).to.be.an('object')
+    expect(vm.$options.methods.clear).to.exist.and.is.a('function')
+  })
+
   it('should render correct content', () => {
     expect(vm.$el.querySelector('table')).to.exist
     expect(vm.$el.querySelector('thead')).to.exist

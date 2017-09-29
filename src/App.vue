@@ -8,7 +8,6 @@ div#app(uk-grid)
 
 <script>
 import UIkit from 'uikit'
-
 import RecordForm from './components/RecordForm'
 import RecordTable from './components/RecordTable'
 import RecordRow from './components/RecordRow'

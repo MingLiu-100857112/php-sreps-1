@@ -1,5 +1,5 @@
 <template lang="pug">
-div.record-table.overflow
+div#record-table.overflow
   table.uk-table.uk-table-small
     thead
       tr
@@ -7,13 +7,22 @@ div.record-table.overflow
         th.small Title
         th.small Quantity
         th.small Date
+        th: button(@click="clear", type="button", uk-close)
     tbody
       slot
 </template>
 
 <script>
+import UIkit from 'uikit'
+import { database } from '../database'
+
 export default {
-  name: 'record-table'
+  name: 'record-table',
+  methods: {
+    clear: function() {
+      database.remove()
+    }
+  }
 }
 </script>
 
